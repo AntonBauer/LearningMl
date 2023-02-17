@@ -1,7 +1,9 @@
 import os
+from typing import List
 
 import opendatasets as od
 import pandas as pd
+import tensorflow as tf
 from pandas import Series
 
 
@@ -26,3 +28,11 @@ def split_into_features_and_label(dataset: pd.DataFrame, label) -> tuple[pd.Data
     label = features.pop(label)
 
     return features, label
+
+
+def drop_unusable_columns(dataset: pd.DataFrame, to_drop: List[str]) -> pd.DataFrame:
+    result = dataset.copy()
+    for column in to_drop:
+        result.pop(column)
+
+    return result
