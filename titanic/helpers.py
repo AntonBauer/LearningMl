@@ -12,9 +12,9 @@ def print_dataset_info(dataset: pd.DataFrame, description: str = ''):
     print()
 
 
-def download_dataset(url: str, dataset_path: str, print_dataset=False) -> pd.DataFrame:
+def download_dataset(url: str, dataset_path: str, files_path: str, file_name: str, print_dataset=False) -> pd.DataFrame:
     od.download(url, dataset_path)
-    dataset = pd.read_csv(os.path.join(dataset_path, 'titanic', 'train.csv'))
+    dataset = pd.read_csv(os.path.join(dataset_path, files_path, file_name))
     if print_dataset:
         print_dataset_info(dataset, 'Titanic data')
 
